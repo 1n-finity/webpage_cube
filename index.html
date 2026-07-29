@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cube.science</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Abstract glowing nodes background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%),
+                radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.1), transparent 30%);
+            z-index: 1;
+        }
+
+        /* Subtle grid overlay */
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 1;
+        }
+
+        /* Centered content box */
+        .content {
+            position: relative;
+            z-index: 2;
+            background: rgba(15, 23, 42, 0.7);
+            padding: 3rem 4rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            max-width: 500px;
+            margin: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #38bdf8, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #94a3b8;
+            margin-bottom: 2rem;
+        }
+
+        /* Static SVG container */
+        .infinity-container {
+            width: 70px;
+            height: 35px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        /* Animated blue streak flowing along the path */
+        .infinity-streak {
+            stroke-dasharray: 30 70; /* 30 units of color, 70 units of gap */
+            animation: flow 2s linear infinite;
+        }
+
+        @keyframes flow {
+            from {
+                stroke-dashoffset: 100;
+            }
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="grid"></div>
+    <div class="content">
+        <h1>cube.science</h1>
+        <p>We're under construction. Please check back later for an update.</p>
+        
+        <!-- Infinity Symbol with flowing stroke -->
+        <svg class="infinity-container" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dim background track for the infinity shape -->
+            <path d="M 25 25 C 25 10, 45 10, 50 25 C 55 40, 75 40, 75 25 C 75 10, 55 10, 50 25 C 45 40, 25 40, 25 25 Z" 
+                  fill="none" 
+                  stroke="rgba(255, 255, 255, 0.1)" 
+                  stroke-width="6" />
+                  
+            <!-- The moving blue streak -->
+            <path class="infinity-streak" 
+                  d="M 25 25 C 25 10, 45 10, 50 25 C 55 40, 75 40, 75 25 C 75 10, 55 10, 50 25 C 45 40, 25 40, 25 25 Z" 
+                  fill="none" 
+                  stroke="#38bdf8" 
+                  stroke-width="6" 
+                  stroke-linecap="round" 
+                  pathLength="100" />
+        </svg>
+    </div>
+</body>
+</html>
