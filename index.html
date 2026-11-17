@@ -1,130 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cube.science</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #e2e8f0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        /* Abstract glowing nodes background */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 15% 50%, rgba(56, 189, 248, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.15), transparent 25%),
-                radial-gradient(circle at 50% 80%, rgba(16, 185, 129, 0.1), transparent 30%);
-            z-index: 1;
-        }
-
-        /* Subtle grid overlay */
-        .grid {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: 1;
-        }
-
-        /* Centered content box */
-        .content {
-            position: relative;
-            z-index: 2;
-            background: rgba(15, 23, 42, 0.7);
-            padding: 3rem 4rem;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-            max-width: 500px;
-            margin: 20px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #38bdf8, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
-
-        p {
-            font-size: 1.2rem;
-            line-height: 1.5;
-            color: #94a3b8;
-            margin-bottom: 2rem;
-        }
-
-        /* Static SVG container */
-        .infinity-container {
-            width: 70px;
-            height: 35px;
-            margin: 0 auto;
-            display: block;
-        }
-
-        /* Animated blue streak flowing along the path */
-        .infinity-streak {
-            stroke-dasharray: 30 70; /* 30 units of color, 70 units of gap */
-            animation: flow 2s linear infinite;
-        }
-
-        @keyframes flow {
-            from {
-                stroke-dashoffset: 100;
-            }
-            to {
-                stroke-dashoffset: 0;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakesh B G | Computational Materials &amp; Chemistry Portfolio</title>
+  <!-- Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Inline SVG Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23553a8d'/><text x='50%' y='55%' font-family='sans-serif' font-weight='bold' font-size='44' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'>RBG</text></svg>">
+  <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="background"></div>
-    <div class="grid"></div>
-    <div class="content">
-        <h1>cube.science</h1>
-        <p>We're under construction. Please check back later for an update.</p>
-        
-        <!-- Infinity Symbol with flowing stroke -->
-        <svg class="infinity-container" viewBox="0 0 100 50" xmlns="http://www.w3.org/2000/svg">
-            <!-- Dim background track for the infinity shape -->
-            <path d="M 25 25 C 25 10, 45 10, 50 25 C 55 40, 75 40, 75 25 C 75 10, 55 10, 50 25 C 45 40, 25 40, 25 25 Z" 
-                  fill="none" 
-                  stroke="rgba(255, 255, 255, 0.1)" 
-                  stroke-width="6" />
-                  
-            <!-- The moving blue streak -->
-            <path class="infinity-streak" 
-                  d="M 25 25 C 25 10, 45 10, 50 25 C 55 40, 75 40, 75 25 C 75 10, 55 10, 50 25 C 45 40, 25 40, 25 25 Z" 
-                  fill="none" 
-                  stroke="#38bdf8" 
-                  stroke-width="6" 
-                  stroke-linecap="round" 
-                  pathLength="100" />
-        </svg>
-    </div>
+
+  <!-- =======================================================================
+       Mobile Header (Visible only on smaller viewports)
+       ======================================================================= -->
+  <header class="mobile-header">
+    <div class="mobile-brand">Rakesh B G</div>
+    <button class="mobile-nav-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+
+  <!-- =======================================================================
+       Sidebar Navigation (Fixed left panel on desktop)
+       ======================================================================= -->
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav" aria-label="Primary Navigation">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#home" class="nav-link active" data-section="home">
+            <span class="nav-text">HOME</span>
+            <span class="nav-line"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#experience" class="nav-link" data-section="experience">
+            <span class="nav-text">EXPERIENCE</span>
+            <span class="nav-line"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#projects" class="nav-link" data-section="projects">
+            <span class="nav-text">PROJECTS</span>
+            <span class="nav-line"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#about" class="nav-link" data-section="about">
+            <span class="nav-text">ABOUT ME</span>
+            <span class="nav-line"></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#contact" class="nav-link" data-section="contact">
+            <span class="nav-text">GET IN TOUCH</span>
+            <span class="nav-line"></span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- =======================================================================
+       Main Content (Right scrollable sections)
+       ======================================================================= -->
+  <main class="main-content">
+
+    <!-- =====================================================================
+         Section 1: Home
+         ===================================================================== -->
+    <section id="home" class="section section-home">
+      <!-- Interactive Geometric Constellation Canvas -->
+      <canvas id="geometricCanvas" class="geometric-canvas" aria-hidden="true"></canvas>
+
+      <div class="section-container hero-container">
+        <h1 class="hero-title">Hello! I am Rakesh</h1>
+        <p class="hero-description">
+          PhD Research Scholar in Computational Materials at Centre for Nano and Material Sciences (CNMS), Jain
+          University, and UGC-JRF awardee. Combining strong foundations in computational chemistry (DFT, VASP, GROMACS),
+          data science &amp; programming (IIT Madras), and machine learning to investigate advanced materials and
+          molecular mechanisms.
+        </p>
+        <div class="hero-actions">
+          <a href="#experience" class="btn btn-primary">EXPERIENCE</a>
+          <a href="#contact" class="btn btn-outline">CONNECT WITH ME</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Section 2: Experience
+         ===================================================================== -->
+    <section id="experience" class="section section-experience">
+      <div class="section-container">
+        <h2 class="section-heading">Experience</h2>
+
+        <div class="experience-card-outer">
+          <div class="experience-grid">
+
+            <!-- Experience Item 1: PhD Research Scholar -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div class="icon-badge">
+                  <!-- Atom / Science Icon -->
+                  <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                    <circle cx="12" cy="12" r="2.5" />
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+                      opacity="0.3" />
+                    <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(30 12 12)" fill="none"
+                      stroke="currentColor" stroke-width="1.6" />
+                    <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(-30 12 12)" fill="none"
+                      stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                </div>
+                <div class="exp-meta">
+                  <h3 class="exp-title">PhD Scholar, CNMS &ndash; Jain University</h3>
+                  <span class="exp-date">Feb 2026 &ndash; Present</span>
+                </div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Conducting first-principles Density Functional Theory (DFT) calculations on nanostructured materials
+                  and transition metal oxide composites for different applications</li>
+                <li>Investigating electronic band structures, density of states (DOS), adsorption energies, and charge
+                  transfer dynamics</li>
+                <li>Developing automated high-throughput simulation pipelines using Python and Bash scripts on
+                  high-performance computing clusters</li>
+              </ul>
+            </div>
+
+            <!-- Experience Item 2: Chemical Associate -->
+            <div class="exp-item">
+              <div class="exp-header">
+                <div class="icon-badge">
+                  <!-- Chemical Flask / Laboratory Icon -->
+                  <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                    <path
+                      d="M19 19L14 9V4h1V2H9v2h1v5L5 19c-1 1.73.25 4 2.25 4h9.5c2 0 3.25-2.27 2.25-4zm-8.25-8.5l3.5 6.3c.27.48.06 1.2-.5 1.2H6.25c-.56 0-.77-.72-.5-1.2l3.5-6.3V4h1.5v6.5z" />
+                  </svg>
+                </div>
+                <div class="exp-meta">
+                  <h3 class="exp-title">Associate &ndash; Chemical, Prewel Labs</h3>
+                  <span class="exp-date">Aug 2022 &ndash; Aug 2024</span>
+                </div>
+              </div>
+              <ul class="exp-bullets">
+                <li>Conducted analytical method validation, verification, and physicochemical testing of water,
+                  pharmaceuticals, and specialized chemical samples</li>
+                <li>Authored Standard Operating Procedures (SOPs) and comprehensive validation protocols conforming to
+                  quality benchmarks</li>
+                <li>Provided classroom instruction and practical hands-on instrumentation training to incoming
+                  associates and laboratory interns</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Section 3: Projects
+         ===================================================================== -->
+    <section id="projects" class="section section-projects">
+      <div class="section-container">
+        <h2 class="section-heading">Research &amp; Projects</h2>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <div class="project-card">
+            <div class="project-header">
+              <div class="icon-badge">
+                <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                  <path
+                    d="M12 3C7.03 3 3 7.03 3 12c0 3.86 2.45 7.14 5.9 8.38.45.08.6-.2.6-.43v-1.52c-2.4.52-2.9-1.16-2.9-1.16-.4-1.02-.97-1.29-.97-1.29-.78-.54.06-.53.06-.53.86.06 1.32.89 1.32.89.77 1.32 2.02.94 2.51.72.08-.56.3-.94.55-1.16-1.92-.22-3.93-.96-3.93-4.27 0-.94.34-1.71.89-2.31-.09-.22-.39-1.1.08-2.29 0 0 .73-.23 2.38.89.69-.19 1.43-.29 2.17-.29s1.48.1 2.17.29c1.65-1.12 2.38-.89 2.38-.89.47 1.19.17 2.07.08 2.29.56.6 0.89 1.37.89 2.31 0 3.32-2.02 4.05-3.95 4.26.31.27.59.8.59 1.62v2.4c0 .24.15.52.61.43 3.44-1.24 5.88-4.52 5.88-8.38 0-4.97-4.03-9-9-9z" />
+                </svg>
+              </div>
+              <div class="project-title-wrap">
+                <h3 class="project-title">Molecular Dynamics of Cytochrome-c</h3>
+                <span class="project-subtitle">M.Sc. Thesis &bull; Univ. of Hyderabad</span>
+              </div>
+            </div>
+            <p class="project-desc">
+              Conformational analysis of Cytochrome-c under very low static electric field (DC) using tryptophan
+              fluorescence measurements and molecular dynamics simulation studies via GROMACS at variable voltages under
+              Prof. Abani K. Bhuyan.
+            </p>
+            <div class="project-tags">
+              <span class="tag">GROMACS</span>
+              <span class="tag">Molecular Dynamics</span>
+              <span class="tag">Fluorescence</span>
+              <span class="tag">Biophysics</span>
+            </div>
+          </div>
+
+          <!-- Project 2 -->
+          <div class="project-card">
+            <div class="project-header">
+              <div class="icon-badge">
+                <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                  <path
+                    d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z" />
+                </svg>
+              </div>
+              <div class="project-title-wrap">
+                <h3 class="project-title">Automated Peritoneal Dialysis</h3>
+                <span class="project-subtitle">Pharma &amp; Biochemical R&amp;D</span>
+              </div>
+            </div>
+            <p class="project-desc">
+              Operational validation of newly developed Automated Peritoneal Dialysis equipment alongside precision
+              chemical analysis of dialysis effluents for protein and urea content, plus comprehensive filter efficiency
+              testing.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Analytical Chemistry</span>
+              <span class="tag">Spectroscopy</span>
+              <span class="tag">Method Validation</span>
+              <span class="tag">Effluent Analysis</span>
+            </div>
+          </div>
+
+          <!-- Project 3 -->
+          <div class="project-card">
+            <div class="project-header">
+              <div class="icon-badge">
+                <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                  <path
+                    d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                </svg>
+              </div>
+              <div class="project-title-wrap">
+                <h3 class="project-title">Numerical Methods of PDE</h3>
+                <span class="project-subtitle">TIFR Center for Applicable Mathematics</span>
+              </div>
+            </div>
+            <p class="project-desc">
+              Research internship investigating high-order numerical discretization schemes and computational algorithms
+              for partial differential equations (PDEs) in MATLAB under Prof. G.D. Veerappa Gowda.
+            </p>
+            <div class="project-tags">
+              <span class="tag">MATLAB</span>
+              <span class="tag">Numerical PDEs</span>
+              <span class="tag">Applied Mathematics</span>
+              <span class="tag">Simulation</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Section 4: About Me
+         ===================================================================== -->
+    <section id="about" class="section section-about">
+      <div class="section-container">
+        <h2 class="section-heading">About Me</h2>
+        <p class="about-lead">
+          I am a computational materials researcher and chemist bridging quantum mechanical modeling, data science, and
+          machine learning. Currently pursuing my Ph.D. at the Centre for Nano and Material Sciences, Jain University,
+          alongside a B.S. in Data Science and Applications from IIT Madras, I specialize in DFT simulations, molecular
+          dynamics, and machine learning.
+        </p>
+
+        <div class="about-grid-outer">
+          <div class="about-grid">
+
+            <!-- Card 1: Research Skills & Tools -->
+            <div class="about-card">
+              <div class="about-card-header">
+                <div class="icon-badge">
+                  <!-- Code / Software Icon -->
+                  <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                    <path
+                      d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
+                  </svg>
+                </div>
+                <h3 class="about-card-title">Research Skills &amp; Tools</h3>
+              </div>
+              <ul class="about-bullets">
+                <li><span class="bullet-highlight">Computational Tools:</span> Density Functional Theory (DFT), VASP,
+                  GROMACS, ORCA</li>
+                <li><span class="bullet-highlight">Programming &amp; Scripting:</span> Python, Bash Scripting, MATLAB,
+                  Linux Environment</li>
+                <li><span class="bullet-highlight">Data Science:</span> Data Science &amp; Statistical Modeling,
+                  Numerical Methods</li>
+                <li><span class="bullet-highlight">Analytical Instruments:</span> FTIR &amp; FTIR-ATR Spectroscopy,
+                  UV-Visible Spectrophotometer, Fluorescence Spectrophotometer, Flame Photometer, Gas Chromatograph (GC)
+                </li>
+                <li><span class="bullet-highlight">Languages:</span> English, Kannada, Hindi</li>
+              </ul>
+            </div>
+
+            <!-- Card 2: Education -->
+            <div class="about-card">
+              <div class="about-card-header">
+                <div class="icon-badge">
+                  <!-- University Temple Icon -->
+                  <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                    <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" />
+                  </svg>
+                </div>
+                <h3 class="about-card-title">Education</h3>
+              </div>
+              <ul class="about-bullets">
+                <li><span class="bullet-highlight">Ph.D. in Chemistry (Computational Materials):</span> Centre for Nano
+                  and Material Sciences (CNMS), Jain University (Feb 2026 &ndash; Present)</li>
+                <li><span class="bullet-highlight">B.S. Degree in Data Science &amp; Applications:</span> Indian
+                  Institute of Technology (IIT) Madras (2023 &ndash; Present)</li>
+                <li><span class="bullet-highlight">M.Sc. in Chemistry:</span> University of Hyderabad, Hyderabad (2018
+                  &ndash; 2020, CGPA: 7.18)</li>
+                <li><span class="bullet-highlight">B.Sc. in Physics, Chemistry &amp; Mathematics:</span> CHRIST (Deemed
+                  to be University), Bengaluru (2015 &ndash; 2018, CGPA: 9.07)</li>
+              </ul>
+            </div>
+
+            <!-- Card 3: Honors & Achievements -->
+            <div class="about-card">
+              <div class="about-card-header">
+                <div class="icon-badge">
+                  <!-- Trophy / Award Icon -->
+                  <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                    <path
+                      d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94.63 1.5 1.98 2.63 3.61 2.96V19H7v2h10v-2h-4v-3.1c1.63-.33 2.98-1.46 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z" />
+                  </svg>
+                </div>
+                <h3 class="about-card-title">Scholarships &amp; Honors</h3>
+              </div>
+              <ul class="about-bullets">
+                <li><span class="bullet-highlight">UGC-JRF in Chemical Sciences:</span> Awarded prestigious Junior
+                  Research Fellowship under UGC scheme (July 2023)</li>
+                <li><span class="bullet-highlight">GATE in Chemistry:</span> Qualified GATE 2022 in Chemistry subject
+                </li>
+                <li><span class="bullet-highlight">NPTEL Certification:</span> Computer Aided Drug Design (QSAR,
+                  molecular modeling, quantum mechanics, pharmacokinetics)</li>
+                <li><span class="bullet-highlight">NPTEL Certification:</span> Spectroscopic Techniques for
+                  Pharmaceutical &amp; Biopharmaceutical Industries (FTIR, NMR, AAS, Mass Spec)</li>
+              </ul>
+            </div>
+
+            <!-- Card 4: Research & Publications -->
+            <div class="about-card">
+              <div class="about-card-header">
+                <div class="icon-badge">
+                  <!-- Book / Article Icon -->
+                  <svg viewBox="0 0 24 24" class="svg-icon" fill="currentColor">
+                    <path
+                      d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+                  </svg>
+                </div>
+                <h3 class="about-card-title">Research &amp; Publications</h3>
+              </div>
+              <ul class="about-bullets">
+                <li><span class="bullet-highlight">Journal Publication:</span> "Evaluation of Lime Juice as Potential
+                  Green Corrosion Inhibition Using Gravimetric and Electrochemical Studies", S.J. Hepziba Magie Jessima,
+                  <span class="bullet-highlight">B.G. Rakesh</span>, Moksha Muthappa, S. Subhasini, <em>Asian Journal of
+                    Chemistry</em>, 32(8): 2055-2060, 2020. <a href="https://doi.org/10.14233/ajchem.2020.22670"
+                    target="_blank" rel="noopener noreferrer" class="doi-inline-link">doi:
+                    10.14233/ajchem.2020.22670</a>
+                </li>
+                <li><span class="bullet-highlight">Current PhD Focus:</span> Density Functional Theory (DFT) modeling of
+                  heterostructured nanocomposites for energy storage and electrocatalytic mechanisms at CNMS</li>
+                <li><span class="bullet-highlight">Undergraduate Thesis:</span> Green corrosion inhibitor kinetics via
+                  gravimetric analysis (Advisor: Prof. S.J. Hepziba Magie Jessima)</li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         Section 5: Get In Touch (Referencing 4.png style)
+         ===================================================================== -->
+    <section id="contact" class="section section-contact">
+      <div class="section-container">
+        <h2 class="section-heading">Get in touch</h2>
+        <p class="contact-subtext">Contact me to discuss computational materials research, projects, or collaborations!
+        </p>
+
+        <div class="contact-content">
+          <!-- Email -->
+          <div class="contact-group">
+            <h3 class="contact-group-title">Email</h3>
+            <a href="mailto:rakesh.bg@jainuniversity.ac.in" class="email-link">rakesh.bg@jainuniversity.ac.in</a>
+          </div>
+
+          <!-- Research Group Webpage -->
+          <div class="contact-group">
+            <h3 class="contact-group-title">Research Group</h3>
+            <a href="https://quantchem.science/" target="_blank" rel="noopener noreferrer" class="group-icon-btn"
+              aria-label="QuantChem Research Group Webpage"
+              title="QuantChem Research Group (https://quantchem.science/)">
+              <svg viewBox="0 0 24 24" class="group-icon-svg" fill="currentColor">
+                <circle cx="12" cy="12" r="2.6" />
+                <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(30 12 12)" fill="none" stroke="currentColor"
+                  stroke-width="1.6" />
+                <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(-30 12 12)" fill="none" stroke="currentColor"
+                  stroke-width="1.6" />
+                <ellipse cx="12" cy="12" rx="9" ry="3.5" transform="rotate(90 12 12)" fill="none" stroke="currentColor"
+                  stroke-width="1.6" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Academic & Professional Profiles -->
+          <div class="contact-group">
+            <h3 class="contact-group-title">Academic &amp; Professional Profiles</h3>
+            <div class="social-links">
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/rakesh-b-g-3b9b2624b" target="_blank" rel="noopener noreferrer"
+                class="social-item" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" class="social-svg" fill="currentColor">
+                  <path
+                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c-.97 0-1.75-.79-1.75-1.76s.78-1.76 1.75-1.76 1.75.79 1.75 1.76-.78 1.76-1.75 1.76M7.86 18.5v-8.37H5.07v8.37h2.79z" />
+                </svg>
+              </a>
+
+              <!-- GitHub -->
+              <a href="https://github.com/1n-finity" target="_blank" rel="noopener noreferrer" class="social-item"
+                aria-label="GitHub">
+                <svg viewBox="0 0 24 24" class="social-svg" fill="currentColor">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                </svg>
+              </a>
+
+              <!-- Google Scholar / Research Badge -->
+              <a href="https://scholar.google.com/citations?user=cQlhGkkAAAAJ&hl=en" target="_blank"
+                rel="noopener noreferrer" class="social-brand-link">
+                Google Scholar
+              </a>
+
+              <!-- ResearchGate / CNMS Link -->
+              <!-- 
+              <a href="https://www.researchgate.net" target="_blank" rel="noopener noreferrer" class="social-brand-link">
+                ResearchGate
+              </a>
+              -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bar -->
+      <footer class="site-footer">
+        <div class="footer-inner">
+          <p class="copyright">&copy; Rakesh B G <span class="divider">|</span> All rights reserved.</p>
+        </div>
+      </footer>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
 </body>
+
 </html>
